@@ -27,7 +27,7 @@ namespace TestePleno.Models
             }
             return "Id: " + Id +
                     "\nCode: " + Code +
-                    "\nTarifas\n: " + values;
+                    "\nTarifas:\n" + values;
         }
     }
 }
