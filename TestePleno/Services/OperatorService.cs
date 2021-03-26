@@ -30,11 +30,6 @@ namespace TestePleno.Services
             return entity;
         }
 
-        public override Operator Update(Operator entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public Operator GetOperatorByCode(string code)
         {
             var operators = GetAll();
@@ -45,12 +40,12 @@ namespace TestePleno.Services
         public void AddFare(Operator op, Fare fare)
         {
             var operators = GetAll();
-            for(int i=0; i<operators.Count; i++)
+            for (int i = 0; i < operators.Count; i++)
             {
-                if(operators[i].Id == op.Id)
+                if (operators[i].Id == op.Id)
                 {
                     bool equalFare = false;
-                    for (int j=0; j< operators[i].Fares.Count; j++)
+                    for (int j = 0; j < operators[i].Fares.Count; j++)
                     {
                         // Tarifas com valores iguais
                         Fare aux = operators[i].Fares[j];
@@ -58,9 +53,9 @@ namespace TestePleno.Services
                         {
                             DateTime date = fare.UpdatedAt.AddMonths(-6);
                             // A tarifa de mesmo valor encontrada está registrada a mais de 6 meses
-                            if(DateTime.Compare(aux.UpdatedAt, date) < 0)
+                            if (DateTime.Compare(aux.UpdatedAt, date) < 0)
                             {
-                                if(aux.Status == 0)
+                                if (aux.Status == 0)
                                 {
                                     operators[i].Fares[j].Status = 1;
                                     operators[i].Fares[j].UpdatedAt = DateTime.Now;
@@ -79,37 +74,10 @@ namespace TestePleno.Services
             }
         }
 
-        /*
-        public Repository _repository = new Repository();
-
-        public Operator GetOperatorByCode(string code)
+        public override Operator GetById(Guid id)
         {
-            var operators = _repository.GetAll<Operator>();
-            var selectedOperator = operators.FirstOrDefault(o => o.Code == code);
-            return selectedOperator;
+            Operator model = _fakeDatabase.FirstOrDefault(savedModel => savedModel.Id == id);
+            return model;
         }
-
-        public Operator GetOperatorById(Guid id)
-        {
-            var selectedOperator = _repository.GetById<Operator>(id);
-            return selectedOperator;
-        }
-
-        public List<Operator> GetOperators()
-        {
-            var operators = _repository.GetAll<Operator>();
-            return operators;
-        }
-
-        public void Create(Operator insertingOperator)
-        {
-            _repository.Insert(insertingOperator);
-        }
-
-        public void Update(Operator updatingOperator)
-        {
-            _repository.Update(updatingOperator);
-        }
-        */
     }
 }

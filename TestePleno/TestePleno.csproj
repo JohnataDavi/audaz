@@ -58,7 +58,6 @@
     <Compile Include="Services\AbstractGenericService.cs" />
     <Compile Include="Services\FareService.cs" />
     <Compile Include="Services\OperatorService.cs" />
-    <Compile Include="Services\Repository.cs" />
     <Compile Include="Utils\OptionMain.cs" />
     <Compile Include="Views\AbstractEntityView.cs" />
     <Compile Include="Views\FareView.cs" />

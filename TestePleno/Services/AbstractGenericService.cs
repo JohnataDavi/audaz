@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TestePleno.Interfaces;
 
 namespace TestePleno.Service
@@ -12,7 +10,7 @@ namespace TestePleno.Service
         protected List<T> _fakeDatabase;
 
         public AbstractGenericService()
-        { 
+        {
             _fakeDatabase = new List<T>();
         }
 
@@ -33,13 +31,26 @@ namespace TestePleno.Service
             return convertedModels;
         }
 
-        public T GetById(Y id)
+        public abstract T GetById(Y id);
+
+        public abstract T Insert(T entity);
+
+        public T Update(T entity)
         {
             throw new NotImplementedException();
         }
 
-        public abstract T Insert(T entity);
+        /*
+        public abstract T Update(T entity)
+        {
+            var updatingModel = _fakeDatabase.FirstOrDefault(savedModel => savedModel.Id == model.Id);
+            if (updatingModel == null)
+                throw new Exception($"Não há registros para a entidade '{model.GetType().Name}' com Id '{model.Id}'");
 
-        public abstract T Update(T entity);
+            _fakeDatabase.Remove(updatingModel);
+            _fakeDatabase.Add(model);
+        }
+        */
+
     }
 }

@@ -5,7 +5,6 @@ namespace TestePleno.Views
 {
     class MainView : View
     {
-
         public OptionMain getOptionMainView()
         {
             OptionMain option = OptionMain.EXIT;
@@ -50,7 +49,7 @@ namespace TestePleno.Views
                     }
                 }
                 catch (Exception)
-                { 
+                {
                     invalidInput = true;
                 }
             } while (invalidInput);

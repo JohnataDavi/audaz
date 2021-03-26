@@ -1,5 +1,4 @@
-﻿using System;
-using TestePleno.Utils;
+﻿using TestePleno.Utils;
 using TestePleno.Views;
 
 namespace TestePleno.Controllers
@@ -11,7 +10,7 @@ namespace TestePleno.Controllers
         private FareController fareController;
         private OperatorController operatorController;
 
-         public MainController()
+        public MainController()
         {
             operatorController = new OperatorController();
             fareController = new FareController(operatorController.GetService());

@@ -23,7 +23,7 @@ namespace TestePleno.Models
             foreach (Fare f in Fares)
             {
                 values += f.ToString();
-                values += "\n";
+                values += "\n\n";
             }
             return "Id: " + Id +
                     "\nCode: " + Code +

@@ -23,7 +23,7 @@ namespace TestePleno.Controllers
         {
             OptionMain option;
             do
-            { 
+            {
                 option = _screen.getOptionView();
                 switch (option)
                 {
@@ -45,7 +45,6 @@ namespace TestePleno.Controllers
                         break;
                 }
             } while (option != OptionMain.RETURN);
-
         }
 
         public void CreateFare(Fare fare, string operatorCode)
@@ -81,19 +80,17 @@ namespace TestePleno.Controllers
         {
             Fare fare;
             string operatorCode;
-       
             (fare, operatorCode) = _screen.Create();
 
             var selectedOperator = _operatorService.GetOperatorByCode(operatorCode);
-            if(selectedOperator == null)
+            if (selectedOperator == null)
             {
                 _screen.ShowMessage("Não existe operadora cadastrada com esse código!");
                 _screen.ShowMessageWithConfirmation("Digite qualquer tecla para continuar...");
                 return null;
             }
-            
-            _operatorService.AddFare(selectedOperator, fare);
 
+            _operatorService.AddFare(selectedOperator, fare);
             fare = _service.Insert(fare);
             return fare;
         }
